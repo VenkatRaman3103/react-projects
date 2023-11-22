@@ -10,7 +10,6 @@ function App() {
 
     function handelAllItems(item) {
         setAllItems((allItems = [...allItems, item]));
-        console.log(allItems);
     }
     return (
         <div>
@@ -47,7 +46,7 @@ function Form({ onAddItems }) {
 
         let ItemsList = {
             id: Date.now(),
-            descripttion: descripttion,
+            description: descripttion,
             quantity: select,
             packed: true,
         };
@@ -71,7 +70,7 @@ function Form({ onAddItems }) {
 
 function ItemsList({ allItems }) {
     return (
-        <div>
+        <div className="list">
             {allItems.map((item) => (
                 <Item items={item} />
             ))}
