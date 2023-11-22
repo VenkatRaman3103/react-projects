@@ -94,7 +94,7 @@ function ItemsList({ allItems, onDelete, onUpdate }) {
             .sort((a, b) => a.description.localeCompare(b.description));
     }
     if (sortedItems === "description") {
-        itemsSorted = allItems.slice().sort((a, b) => Number(a) - Number(b));
+        itemsSorted = allItems.slice().sort((a, b) => Number(a.packed) - Number(b.packed));
     }
     return (
         <div className="list">
