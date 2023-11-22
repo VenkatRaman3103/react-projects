@@ -3,14 +3,20 @@ import { useState } from "react";
 const initialItems = [
     { id: 1, description: "Passports", quantity: 2, packed: false },
     { id: 2, description: "Socks", quantity: 12, packed: false },
-  ];
+];
 
 function App() {
+    let [allItems, setAllItems] = useState([]);
+
+    function handelAllItems(item){
+        setAllItems(allItems = [...allItems, item])
+        console.log(allItems)
+    }
     return (
         <div>
             <Title />
-            <Form />
-            <ItemsList />
+            <Form onAddItems = {handelAllItems}/>
+            <ItemsList allItems={allItems}/>
             <Footer />
         </div>
     );
@@ -23,9 +29,10 @@ function Title() {
         </div>
     );
 }
-function Form() {
+
+function Form({onAddItems}) {
     let [descripttion, setDescription] = useState("");
-    let [select, setSelect] = useState(1);
+    let [select, setSelect] = useState(1); 
 
     function handelDescription(event) {
         setDescription((descripttion = event.target.value));
@@ -33,6 +40,21 @@ function Form() {
 
     function handleOption(event) {
         setSelect((select = event.target.value));
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault();
+
+        let ItemsList = {
+            id: Date.now(),
+            descripttion: descripttion,
+            quantity: select,
+            packed: true,
+        };
+        onAddItems(ItemsList)
+        console.log(ItemsList);
+
+
     }
 
     return (
@@ -44,11 +66,25 @@ function Form() {
                 ))}
             </select>
             <input placeholder="items..." onChange={handelDescription}></input>
-            <button>Add</button>
+            <button onClick={handleSubmit}>Add</button>
         </form>
     );
 }
-function ItemsList() {}
+
+function ItemsList({allItems}) {
+    return (
+        <div>
+            {allItems.map((item) => (
+                <Item items={item} />
+            ))}
+        </div>
+    );
+}
+
+function Item({ items }) {
+    return <div>{items.description}</div>;
+}
+
 function Footer() {}
 
 export default App;
