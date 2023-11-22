@@ -18,6 +18,10 @@ function App() {
     function handelAllItems(item) {
         setAllItems((allItems = [...allItems, item]));
     }
+
+    function handleClear() {
+        setAllItems((allItems = []));
+    }
     return (
         <div className="app">
             <Title />
@@ -26,6 +30,7 @@ function App() {
                 allItems={allItems}
                 onDelete={handleDelete}
                 onUpdate={handleUpdate}
+                onClear={handleClear}
             />
             <Footer allItems={allItems} />
         </div>
@@ -79,7 +84,7 @@ function Form({ onAddItems }) {
     );
 }
 
-function ItemsList({ allItems, onDelete, onUpdate }) {
+function ItemsList({ allItems, onDelete, onUpdate, onClear }) {
     let [sortedItems, setSortedItems] = useState("input");
 
     function handleSort(event) {
@@ -118,7 +123,7 @@ function ItemsList({ allItems, onDelete, onUpdate }) {
                     <option value={"description"}>sort by description</option>
                     <option value={"status"}>sort by packed status</option>
                 </select>
-                <button>clear all</button>
+                <button onClick={onClear}>clear all</button>
             </div>
         </div>
     );
