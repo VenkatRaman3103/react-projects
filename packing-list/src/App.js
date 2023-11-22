@@ -3,8 +3,16 @@ import { useState } from "react";
 function App() {
     let [allItems, setAllItems] = useState([]);
 
-    function handleDelete(id){
-        setAllItems(allItems.filter((item)=>item.id !== id))
+    function handleDelete(id) {
+        setAllItems(allItems.filter((item) => item.id !== id));
+    }
+
+    function handleUpdate(id) {
+        setAllItems((items) =>
+            items.map((item) =>
+                item.id === id ? { ...item, packed: !item.packed } : item
+            )
+        );
     }
 
     function handelAllItems(item) {
@@ -14,7 +22,11 @@ function App() {
         <div className="app">
             <Title />
             <Form onAddItems={handelAllItems} />
-            <ItemsList allItems={allItems} onDelete = {handleDelete}/>
+            <ItemsList
+                allItems={allItems}
+                onDelete={handleDelete}
+                onUpdate={handleUpdate}
+            />
             <Footer allItems={allItems} />
         </div>
     );
@@ -67,21 +79,25 @@ function Form({ onAddItems }) {
     );
 }
 
-function ItemsList({ allItems, onDelete}) {
+function ItemsList({ allItems, onDelete, onUpdate }) {
     return (
         <div className="list">
             {allItems.map((item) => (
-                <Item items={item} onDelete = {onDelete} />
+                <Item
+                    items={item}
+                    onDelete={onDelete}
+                    onUpdate={onUpdate}
+                />
             ))}
         </div>
     );
 }
 
-function Item({ items, onDelete }) {
+function Item({ items, onDelete, onUpdate }) {
     return (
         <li>
-            <input type="checkbox"></input> 
-            <span>
+            <input type="checkbox" onChange={() => onUpdate(items.id)}></input>
+            <span style={items.packed?{textDecoration: "line-through"}:null}>
                 {items.quantity} {items.description}
             </span>
             <button onClick={() => onDelete(items.id)}>❌</button>
@@ -89,7 +105,7 @@ function Item({ items, onDelete }) {
     );
 }
 
-function Footer({allItems}) {
+function Footer({ allItems }) {
     let len = allItems.length;
     return (
         <footer className="stats">
