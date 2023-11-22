@@ -32,7 +32,11 @@ function Form() {
         </form>
     );
 }
-function ItemsList() {}
-function Footer() {}
+function ItemsList() {
+
+}
+function Footer() {
+    
+}
 
 export default App;
