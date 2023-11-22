@@ -8,15 +8,15 @@ const initialItems = [
 function App() {
     let [allItems, setAllItems] = useState([]);
 
-    function handelAllItems(item){
-        setAllItems(allItems = [...allItems, item])
-        console.log(allItems)
+    function handelAllItems(item) {
+        setAllItems((allItems = [...allItems, item]));
+        console.log(allItems);
     }
     return (
         <div>
             <Title />
-            <Form onAddItems = {handelAllItems}/>
-            <ItemsList allItems={allItems}/>
+            <Form onAddItems={handelAllItems} />
+            <ItemsList allItems={allItems} />
             <Footer />
         </div>
     );
@@ -30,9 +30,9 @@ function Title() {
     );
 }
 
-function Form({onAddItems}) {
+function Form({ onAddItems }) {
     let [descripttion, setDescription] = useState("");
-    let [select, setSelect] = useState(1); 
+    let [select, setSelect] = useState(1);
 
     function handelDescription(event) {
         setDescription((descripttion = event.target.value));
@@ -51,10 +51,8 @@ function Form({onAddItems}) {
             quantity: select,
             packed: true,
         };
-        onAddItems(ItemsList)
+        onAddItems(ItemsList);
         console.log(ItemsList);
-
-
     }
 
     return (
@@ -71,7 +69,7 @@ function Form({onAddItems}) {
     );
 }
 
-function ItemsList({allItems}) {
+function ItemsList({ allItems }) {
     return (
         <div>
             {allItems.map((item) => (
@@ -82,7 +80,11 @@ function ItemsList({allItems}) {
 }
 
 function Item({ items }) {
-    return <div>{items.description}</div>;
+    return (
+        <lis>
+            <span>{items.description}</span>
+        </lis>
+    );
 }
 
 function Footer() {}
