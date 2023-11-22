@@ -80,11 +80,41 @@ function Form({ onAddItems }) {
 }
 
 function ItemsList({ allItems, onDelete, onUpdate }) {
+    let [sortedItems, setSortedItems] = useState("input");
+
+    function handleSort(event) {
+        setSortedItems((sortedItems = event.target.value));
+        console.log(sortedItems);
+    }
+
+    let itemsSorted;
+    if (sortedItems === "input") {
+        itemsSorted = allItems
+            .slice()
+            .sort((a, b) => a.description.localeCompare(b.description));
+    }
+    if (sortedItems === "description") {
+        itemsSorted = allItems.slice().sort((a, b) => Number(a) - Number(b));
+    }
     return (
         <div className="list">
-            {allItems.map((item) => (
-                <Item items={item} onDelete={onDelete} onUpdate={onUpdate} />
-            ))}
+            <div>
+                {itemsSorted.map((item) => (
+                    <Item
+                        items={item}
+                        onDelete={onDelete}
+                        onUpdate={onUpdate}
+                    />
+                ))}
+            </div>
+            <div className="actions">
+                <select onChange={handleSort}>
+                    <option value={"input"}>sort by input order</option>
+                    <option value={"description"}>sort by description</option>
+                    <option value={"status"}>sort by packed status</option>
+                </select>
+                <button>clear all</button>
+            </div>
         </div>
     );
 }
