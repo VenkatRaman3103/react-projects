@@ -33,11 +33,7 @@ function App() {
 }
 
 function Title() {
-    return (
-        <div>
-            <h1>Travel App</h1>
-        </div>
-    );
+    return <h1>Travel App</h1>;
 }
 
 function Form({ onAddItems }) {
@@ -45,10 +41,12 @@ function Form({ onAddItems }) {
     let [select, setSelect] = useState(1);
 
     function handelDescription(event) {
+        event.preventDefault();
         setDescription((descripttion = event.target.value));
     }
 
     function handleOption(event) {
+        event.preventDefault();
         setSelect((select = event.target.value));
     }
 
@@ -62,7 +60,9 @@ function Form({ onAddItems }) {
             packed: false,
         };
         onAddItems(ItemsList);
-        console.log(ItemsList);
+
+        setDescription("");
+        setSelect(1);
     }
 
     return (
@@ -70,7 +70,7 @@ function Form({ onAddItems }) {
             <h2>Enter the itmes: </h2>
             <select onChange={handleOption}>
                 {Array.from({ length: 10 }, (_, i) => i + 1).map((num) => (
-                    <option>{num}</option>
+                    <option key={num}>{num}</option>
                 ))}
             </select>
             <input placeholder="items..." onChange={handelDescription}></input>
@@ -88,19 +88,24 @@ function ItemsList({ allItems, onDelete, onUpdate }) {
     }
 
     let itemsSorted;
-    if (sortedItems === "input") {
+    if (sortedItems === "input") itemsSorted = allItems;
+
+    if (sortedItems === "description")
         itemsSorted = allItems
             .slice()
             .sort((a, b) => a.description.localeCompare(b.description));
-    }
-    if (sortedItems === "description") {
-        itemsSorted = allItems.slice().sort((a, b) => Number(a.packed) - Number(b.packed));
-    }
+
+    if (sortedItems === "status")
+        itemsSorted = allItems
+            .slice()
+            .sort((a, b) => Number(a.packed) - Number(b.packed));
+
     return (
         <div className="list">
             <div>
                 {itemsSorted.map((item) => (
                     <Item
+                        key={item.id}
                         items={item}
                         onDelete={onDelete}
                         onUpdate={onUpdate}
@@ -108,7 +113,7 @@ function ItemsList({ allItems, onDelete, onUpdate }) {
                 ))}
             </div>
             <div className="actions">
-                <select onChange={handleSort}>
+                <select value={sortedItems} onChange={handleSort}>
                     <option value={"input"}>sort by input order</option>
                     <option value={"description"}>sort by description</option>
                     <option value={"status"}>sort by packed status</option>
@@ -126,7 +131,7 @@ function Item({ items, onDelete, onUpdate }) {
             <span
                 style={items.packed ? { textDecoration: "line-through" } : null}
             >
-                {items.quantity} {items.description}
+                {items.quantity}: {items.description}
             </span>
             <button onClick={() => onDelete(items.id)}>❌</button>
         </li>
