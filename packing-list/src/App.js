@@ -59,7 +59,7 @@ function Form({ onAddItems }) {
             id: Date.now(),
             description: descripttion,
             quantity: select,
-            packed: true,
+            packed: false,
         };
         onAddItems(ItemsList);
         console.log(ItemsList);
@@ -83,11 +83,7 @@ function ItemsList({ allItems, onDelete, onUpdate }) {
     return (
         <div className="list">
             {allItems.map((item) => (
-                <Item
-                    items={item}
-                    onDelete={onDelete}
-                    onUpdate={onUpdate}
-                />
+                <Item items={item} onDelete={onDelete} onUpdate={onUpdate} />
             ))}
         </div>
     );
@@ -97,7 +93,9 @@ function Item({ items, onDelete, onUpdate }) {
     return (
         <li>
             <input type="checkbox" onChange={() => onUpdate(items.id)}></input>
-            <span style={items.packed?{textDecoration: "line-through"}:null}>
+            <span
+                style={items.packed ? { textDecoration: "line-through" } : null}
+            >
                 {items.quantity} {items.description}
             </span>
             <button onClick={() => onDelete(items.id)}>❌</button>
