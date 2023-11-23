@@ -6,12 +6,8 @@
 
 ## Projects
 
-1. **[Project 1 Name]**
-   - Description: Brief description of the project.
-   - Technologies Used: List of technologies, frameworks, or libraries used.
-   - [Link to Project 1]
+1. **Packing list**
+   - Travel App for adding, deleting, and marking items as packed, with sorting by input order, description, and packed status.
+   - Technologies Used: React, React hooks.
+   - [packing-list](https://github.com/VenkatRaman3103/react-projects/tree/main/packing-list)
 
-2. **[Project 2 Name]**
-   - Description: Brief description of the project.
-   - Technologies Used: List of technologies, frameworks, or libraries used.
-   - [Link to Project 2]
