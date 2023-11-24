@@ -6,11 +6,15 @@ This is a simple React application that allows users to browse through a set of 
 
 ## Table of Contents
 
-- [Getting Started](#getting-started)
 - [Features](#features)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+
+
+## Features
+
+- Browse through a set of flashcards with questions and answers.
+- Toggle visibility of answers by clicking on flashcards.
+- Simple and clean UI.
 
 ## Getting Started
 
@@ -37,11 +41,6 @@ To get started with this project, follow these steps:
 
     The application will be accessible at [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Features
-
-- Browse through a set of flashcards with questions and answers.
-- Toggle visibility of answers by clicking on flashcards.
-- Simple and clean UI.
 
 ## Usage
 
