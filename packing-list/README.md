@@ -56,3 +56,6 @@ This is a simple React application developed as part of my learning process. The
 - Check/uncheck the checkbox next to the item to mark it as packed/unpacked.
 ## Sorting
 - Use the dropdown menu to select the sorting criteria: "sort by input order," "sort by description," or "sort by packed status."
+---
+
+Happy coding! 🚀
