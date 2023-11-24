@@ -14,5 +14,5 @@
 2. **tabs**
    - a simple tabs component in React
    - Technologies Used: React, React hooks.
-   - [packing-list](https://github.com/VenkatRaman3103/react-projects/tree/main/tabs)
+   - [tabs](https://github.com/VenkatRaman3103/react-projects/tree/main/tabs)
 
