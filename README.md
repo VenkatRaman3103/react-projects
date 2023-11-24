@@ -11,3 +11,8 @@
    - Technologies Used: React, React hooks.
    - [packing-list](https://github.com/VenkatRaman3103/react-projects/tree/main/packing-list)
 
+2. **tabs**
+   - a simple tabs component in React
+   - Technologies Used: React, React hooks.
+   - [packing-list](https://github.com/VenkatRaman3103/react-projects/tree/main/tabs)
+
