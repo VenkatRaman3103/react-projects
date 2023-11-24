@@ -1,6 +1,7 @@
 # Travel App - React Learning Project
 
-![Travel App Screenshot](screenshot.png) <!-- Add a screenshot of your app if available -->
+![travel-app-scr](https://github.com/VenkatRaman3103/react-projects/assets/145652521/940d9107-23d0-4e3c-ae65-6572a23d97ed)
+
 
 ## Overview
 
@@ -16,9 +17,6 @@ This is a simple React application developed as part of my learning process. The
   - [Deleting Items](#deleting-items)
   - [Marking Items as Packed](#marking-items-as-packed)
   - [Sorting](#sorting)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Getting Started
 
