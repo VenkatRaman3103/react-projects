@@ -8,6 +8,7 @@ This is a simple React application that allows users to browse through a set of 
 
 - [Features](#features)
 - [Usage](#usage)
+- [Getting Started](#gettingstarted)
 
 
 ## Features
@@ -15,6 +16,14 @@ This is a simple React application that allows users to browse through a set of 
 - Browse through a set of flashcards with questions and answers.
 - Toggle visibility of answers by clicking on flashcards.
 - Simple and clean UI.
+
+
+## Usage
+
+1. Open the application in your browser.
+2. You will see a list of flashcards with questions.
+3. Click on a flashcard to reveal the answer.
+4. Click again to hide the answer.
 
 ## Getting Started
 
@@ -40,14 +49,6 @@ To get started with this project, follow these steps:
     ```
 
     The application will be accessible at [http://localhost:3000](http://localhost:3000) in your browser.
-
-
-## Usage
-
-1. Open the application in your browser.
-2. You will see a list of flashcards with questions.
-3. Click on a flashcard to reveal the answer.
-4. Click again to hide the answer.
 
 ---
 
