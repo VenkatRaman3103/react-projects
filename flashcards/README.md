@@ -1,4 +1,6 @@
 # React Flashcards App
+<img width="958" alt="Screenshot 2023-11-24 111537" src="https://github.com/VenkatRaman3103/react-projects/assets/145652521/f0e4bdbf-1481-4648-a13b-aaf9c522dd4f">
+
 
 This is a simple React application that allows users to browse through a set of flashcards, revealing answers to questions on user interaction.
 
