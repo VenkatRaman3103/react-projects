@@ -8,7 +8,7 @@ This is a simple React application that allows users to browse through a set of 
 
 - [Features](#features)
 - [Usage](#usage)
-- [Getting Started](#gettingstarted)
+- [Getting Started](#getting-started)
 
 
 ## Features
