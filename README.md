@@ -9,10 +9,15 @@
 1. **Packing list**
    - Travel App for adding, deleting, and marking items as packed, with sorting by input order, description, and packed status.
    - Technologies Used: React, React hooks.
-   - [packing-list](https://github.com/VenkatRaman3103/react-projects/tree/main/packing-list)
+   - Link: [packing-list](https://github.com/VenkatRaman3103/react-projects/tree/main/packing-list)
 
 2. **tabs**
    - a simple tabs component in React
    - Technologies Used: React, React hooks.
-   - [tabs](https://github.com/VenkatRaman3103/react-projects/tree/main/tabs)
+   - Link: [tabs](https://github.com/VenkatRaman3103/react-projects/tree/main/tabs)
+
+1. **Packing list**
+   - Interactive flashcards that reveal answers on user interaction 
+   - Technologies Used: React, React hooks.
+   - Link: [flashcards](https://github.com/VenkatRaman3103/react-projects/tree/main/flashcards)
 
