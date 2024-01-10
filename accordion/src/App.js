@@ -26,11 +26,14 @@ function App() {
 }
 
 function Accordion({ data }) {
+    let [curOpen, setCurOpen ] = useState(null)
     return (
         <>
             <div className="accordion">
                 {data.map((el, ind) => (
                     <AccordionItem
+                        curOpen = {curOpen}
+                        setCurOpen = {setCurOpen}
                         title={el.title}
                         num={ind + 1}
                         text={el.text}
@@ -41,11 +44,13 @@ function Accordion({ data }) {
     );
 }
 
-function AccordionItem({ num, title, text }) {
-    let [isOpen, setIsOpen] = useState(false);
+function AccordionItem({ num, title, text, curOpen, setCurOpen }) {
+    // let [isOpen, setIsOpen] = useState(false);
+    let isOpen = num == curOpen
 
     function handleToggle() {
-        setIsOpen((isOpen = !isOpen));
+        // setIsOpen((isOpen = !isOpen));
+        setCurOpen(num)
     }
 
     return (
