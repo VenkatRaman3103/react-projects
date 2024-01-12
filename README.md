@@ -16,7 +16,7 @@
    - Technologies Used: React, React hooks.
    - Link: [tabs](https://github.com/VenkatRaman3103/react-projects/tree/main/tabs)
 
-1. **Packing list**
+1. **Flashcards**
    - Interactive flashcards that reveal answers on user interaction 
    - Technologies Used: React, React hooks.
    - Link: [flashcards](https://github.com/VenkatRaman3103/react-projects/tree/main/flashcards)
