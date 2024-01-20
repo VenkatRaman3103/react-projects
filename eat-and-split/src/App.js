@@ -34,22 +34,29 @@ function Button({ children, onClick }) {
 function App() {
     const [showform, setShowform] = useState(false);
 
-    let [allFrienList, setAllFriendList] = useState(initialFriends);
+    let [allFriendList, setAllFriendList] = useState(initialFriends);
+
+    const [selectedFriend, setSelectedFriend] = useState('hi')
 
     function handleShowForm() {
         setShowform(!showform);
     }
 
-    function updateFirends(newFriend) {
-        setAllFriendList([...allFrienList, newFriend]);
+    function updateFriends(newFriend) {
+        setAllFriendList([...allFriendList, newFriend]);
+    }
+
+    function onSelection(friend){
+        setSelectedFriend(friend)
+        console.log(friend)
     }
 
     return (
         <div className="app">
             <div className="sidebar">
-                <FriendList data={allFrienList} />
+                <FriendList data={allFriendList} onSelection={onSelection}/>
                 {showform ? (
-                    <FormAddFriend updateFirends={updateFirends} />
+                    <FormAddFriend updateFriends={updateFriends} />
                 ) : (
                     ""
                 )}
@@ -59,12 +66,12 @@ function App() {
                 </Button>
             </div>
 
-            <FormSplitBill />
+            <FormSplitBill selectedFriend={selectedFriend}/>
         </div>
     );
 }
 
-function FriendList({ data }) {
+function FriendList({ data, onSelection }) {
     return (
         <ul>
             {data.map((friend) => (
@@ -73,13 +80,17 @@ function FriendList({ data }) {
                     name={friend.name}
                     balance={friend.balance}
                     key={friend.id}
+
+                    friend={friend}
+
+                    onSelection={onSelection}
                 />
             ))}
         </ul>
     );
 }
 
-function Friend({ image, name, balance }) {
+function Friend({ image, name, balance, onSelection, friend }) {
     function balanceDis(num, name) {
         if (num < 0) {
             return <p className="red">you owe ${Math.abs(num)}</p>;
@@ -99,7 +110,7 @@ function Friend({ image, name, balance }) {
             <img src={image} />
             <h3>{name}</h3>
             {balanceDis(balance, name)}
-            <Button>Select</Button>
+            <Button onClick={()=>onSelection(friend)}>Select</Button>
         </li>
     );
 }
@@ -111,8 +122,8 @@ function Friend({ image, name, balance }) {
 //     balance: -7,
 // },
 
-function FormAddFriend({ updateFirends }) {
-    let [freindName, setFriendName] = useState("");
+function FormAddFriend({ updateFriends }) {
+    let [friendName, setFriendName] = useState("");
     let [friedPhotoUrl, setFriedPhotoUrl] = useState(
         "https://i.pravatar.cc/48"
     );
@@ -120,18 +131,18 @@ function FormAddFriend({ updateFirends }) {
     function handleAddFriend(e) {
         e.preventDefault();
 
-        if(!freindName || !friedPhotoUrl) return;
+        if(!friendName || !friedPhotoUrl) return;
 
         const id = crypto.randomUUID();
 
         let newFriend = {
             id: id,
-            name: freindName,
+            name: friendName,
             image: `https://i.pravatar.cc/48?=${id}`,
             balance: 0,
         };
 
-        updateFirends(newFriend);
+        updateFriends(newFriend);
 
         setFriendName("");
         setFriedPhotoUrl("https://i.pravatar.cc/48");
@@ -155,10 +166,10 @@ function FormAddFriend({ updateFirends }) {
     );
 }
 
-function FormSplitBill() {
+function FormSplitBill({selectedFriend}) {
     return (
         <form className="form-split-bill">
-            <h2>Split the Bill</h2>
+            <h2>Split the Bill with {selectedFriend.name}</h2>
 
             <lable>Total Bill</lable>
             <input type="text" />
